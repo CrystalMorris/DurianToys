@@ -81,7 +81,9 @@ app.get('/item/:id/delete', async(req, res)=>{
         res.redirect('/warehouses/'+ thisWarehouse.id)
     })
 
-
+app.get('/', (req, res)=>{
+    res.redirect('/warehouses')
+})
 
 app.listen(process.env.PORT || PORT, () => {
     sequelize.sync({force: true});
