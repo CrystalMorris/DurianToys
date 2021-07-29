@@ -76,8 +76,10 @@ app.get('/warehouses/:id', async (req, res) =>{
 app.get('/item/:id/delete', async(req, res)=>{    
     const thisItem =await Item.findByPk(req.params.id)    
     const thisWarehouse = await  Warehouse.findByPk(thisItem.WarehouseId)
-    await Item.destroy({where: {id: req.params.id}}); 
-    res.redirect('/warehouses/'+ thisWarehouse.id)
+    await Item.destroy({where: {id: req.params.id}})  
+    
+    setTimeout(function(){  res.redirect('/warehouses/'+ thisWarehouse.id) }, 3000);
+   
     })
 
 app.get('/', (req, res)=>{
