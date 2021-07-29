@@ -76,7 +76,17 @@ app.get('/item/:id/delete', async (req, res)=>{
      const thisItem = await Item.findByPk(req.params.id)    
      const thisWarehouse = await Warehouse.findByPk(thisItem.WarehouseId)     
     await Item.destroy({where: {id: req.params.id}})
-    res.redirect('/warehouses/' + thisWarehouse.id);
+    const foundItem = await Item.findByPk(req.params.id)
+    while (foundItem) {
+        console.log("deleting...")
+        if(!foundItem){
+           break;
+        }
+      }
+
+res.redirect('/warehouses/' + thisWarehouse.id)
+
+    
 })
 
 app.get('/', (req, res)=>{
