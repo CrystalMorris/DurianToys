@@ -78,13 +78,12 @@ app.get('/item/:id/delete', async(req, res)=>{
     const thisWarehouse = await Warehouse.findByPk(thisItem.WarehouseId)
     Item.destroy({where: {id: req.params.id}});
     const foundItem = await Item.findByPk(req.params.id)
-        console.log("this is app.js:79 " +JSON.stringify(thisWarehouse))
         res.redirect('/warehouses/'+ thisWarehouse.id)
     })
 
 
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     sequelize.sync({force: true});
     console.log(`Your server is running on http://localhost:${PORT}`);
 })

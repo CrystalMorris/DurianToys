@@ -1,5 +1,5 @@
 {
-  "name": "Durian Toys",
+  "name": "swe-inventory-app-starter",
   "version": "1.0.0",
   "description": "Boilerplate code for SWE Bootcamp Project",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CrystalMorris/DurianToys.git"
+    "url": "git+https://github.com/MultiverseLearningProducts/swe-inventory-app-starter.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CrystalMorris/DurianToys/issues"
+    "url": "https://github.com/MultiverseLearningProducts/swe-inventory-app-starter/issues"
   },
-  "homepage": "https://github.com/CrystalMorris/DurianToys#readme",
+  "homepage": "https://github.com/MultiverseLearningProducts/swe-inventory-app-starter#readme",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
     "express": "^4.17.1",
@@ -29,3 +29,4 @@
     "sqlite3": "^5.0.2"
   }
 }
+
