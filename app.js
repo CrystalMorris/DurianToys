@@ -77,8 +77,7 @@ app.get('/item/:id/delete', async (req, res)=>{
      const thisWarehouse = await Warehouse.findByPk(thisItem.WarehouseId)     
     await Item.destroy({where: {id: req.params.id}})
     const foundItem = await Item.findByPk(req.params.id)
-    while (foundItem) {
-        console.log("deleting...")
+    while (foundItem) {        
         if(!foundItem){
            break;
         }
