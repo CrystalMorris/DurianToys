@@ -37,7 +37,6 @@ app.get('/items', async (req, res) => {
 
 app.get('/item/:id', async (req, res) => {
     const thisItem = await Item.findByPk(req.params.id,{include:{all:true}})
-    console.log("This warehouse's  " + thisItem.Warehouse)
     res.render('item', {thisItem})
 })
 
@@ -73,13 +72,14 @@ app.get('/warehouses/:id', async (req, res) =>{
 
 //Delete an item from an inventory
 
-app.get('/item/:id/delete', async(req, res)=>{    
-    const thisItem =await Item.findByPk(req.params.id)    
-    const thisWarehouse = await  Warehouse.findByPk(thisItem.WarehouseId)
-    await Item.destroy({where: {id: req.params.id}})  
-    
-    setTimeout(function(){  res.redirect('/warehouses/'+ thisWarehouse.id) }, 3000);
-   
+app.get('/item/:id/delete', async (req, res)=>{  
+    const thisItem = await Item.findByPk(req.params.id)    
+    const thisWarehouse = await Warehouse.findByPk(thisItem.WarehouseId)
+    await Item.destroy({where: {id: req.params.id}})      
+    //setTimeout(res.redirect( '/warehouses/'+ thisWarehouse.id)) ;
+    setTimeout((() => {
+        res.redirect('/warehouses/'+ thisWarehouse.id)
+      }), 3000)
     })
 
 app.get('/', (req, res)=>{
