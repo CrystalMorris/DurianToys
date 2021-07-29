@@ -73,12 +73,11 @@ app.get('/warehouses/:id', async (req, res) =>{
 
 //Delete an item from an inventory
 
-app.get('/item/:id/delete', async(req, res)=>{
+app.get('/item/:id/delete', async(req, res)=>{    
     const thisItem =await Item.findByPk(req.params.id)    
-    const thisWarehouse = await Warehouse.findByPk(thisItem.WarehouseId)
-    Item.destroy({where: {id: req.params.id}});
-    const foundItem = await Item.findByPk(req.params.id)
-        res.redirect('/warehouses/'+ thisWarehouse.id)
+    const thisWarehouse = await  Warehouse.findByPk(thisItem.WarehouseId)
+    await Item.destroy({where: {id: req.params.id}}); 
+    res.redirect('/warehouses/'+ thisWarehouse.id)
     })
 
 app.get('/', (req, res)=>{
